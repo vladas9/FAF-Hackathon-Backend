@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XMAS.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+669dc67b85d03e101338ce2a7494b4987c214816")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d3494e2f9eeaf0be30e98ef7f61af71d0e46422")]
 [assembly: System.Reflection.AssemblyProductAttribute("XMAS.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XMAS.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,34 +5,21 @@ using XMAS.Domain;
 
 namespace XMAS.Services;
 
-public class SentimentService : ISentimentService
+public class ClickbaitService : IClickbaitDetectionService
 {
     private readonly HttpClient _httpClient;
     private readonly string _key;
     private readonly string _mlService;
 
-    public SentimentService(HttpClient httpClient, IConfiguration configuration)
+    public ClickbaitService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
         _key = configuration["MlServices:AuthKey"]!;
-        _mlService = configuration["MlServices:SentimentalMLService"]!;
+        _mlService = configuration["MlServices:ClickbaitMLService"]!;
     }
 
-    public string AnalyzeSentiment(string text)
+    public async Task<string> DetectClickbaitAsync(string text)
     {
-        return CallSentimentApiAsync(text).GetAwaiter().GetResult();
-    }
-
-    private async Task<string> CallSentimentApiAsync(string text)
-    {
-        const int maxTokens = 512;
-
-        // Truncate the text if it exceeds the maximum token limit
-        if (text.Length > maxTokens)
-        {
-            text = text.Substring(0, maxTokens);
-        }
-
         _httpClient.DefaultRequestHeaders.Clear();
         _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_key}");
 
