@@ -1,0 +1,11 @@
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\bin\Debug\net8.0\XMAS.Domain.deps.json
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\bin\Debug\net8.0\XMAS.Domain.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\bin\Debug\net8.0\XMAS.Domain.pdb
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.AssemblyInfoInputs.cache
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.AssemblyInfo.cs
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\refint\XMAS.Domain.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\XMAS.Domain.pdb
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Domain\obj\Debug\net8.0\ref\XMAS.Domain.dll

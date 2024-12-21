@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMAS.Domain", "XMAS.Domain\XMAS.Domain.csproj", "{198F3433-CED7-4A02-8E69-FB1CEC80DBB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMAS.Repositories", "XMAS.Repositories\XMAS.Repositories.csproj", "{2FA447CB-291D-481E-ADF0-C98A885ECD88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMAS.Api", "XMAS.Api\XMAS.Api.csproj", "{22BA8F57-C2C4-483F-A601-CBB68D655EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMAS.Services", "XMAS.Services\XMAS.Services.csproj", "{21235415-DC21-45F6-9A15-57532D9F1807}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{198F3433-CED7-4A02-8E69-FB1CEC80DBB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198F3433-CED7-4A02-8E69-FB1CEC80DBB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198F3433-CED7-4A02-8E69-FB1CEC80DBB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198F3433-CED7-4A02-8E69-FB1CEC80DBB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA447CB-291D-481E-ADF0-C98A885ECD88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA447CB-291D-481E-ADF0-C98A885ECD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA447CB-291D-481E-ADF0-C98A885ECD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA447CB-291D-481E-ADF0-C98A885ECD88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BA8F57-C2C4-483F-A601-CBB68D655EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BA8F57-C2C4-483F-A601-CBB68D655EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BA8F57-C2C4-483F-A601-CBB68D655EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BA8F57-C2C4-483F-A601-CBB68D655EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21235415-DC21-45F6-9A15-57532D9F1807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21235415-DC21-45F6-9A15-57532D9F1807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21235415-DC21-45F6-9A15-57532D9F1807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21235415-DC21-45F6-9A15-57532D9F1807}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\XMAS.Services.deps.json
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\XMAS.Services.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\XMAS.Services.pdb
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\XMAS.Domain.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\XMAS.Domain.pdb
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.csproj.AssemblyReference.cache
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.AssemblyInfoInputs.cache
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.AssemblyInfo.cs
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.csproj.CoreCompileInputs.cache
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Ser.793913FB.Up2Date
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\refint\XMAS.Services.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\XMAS.Services.pdb
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\obj\Debug\net8.0\ref\XMAS.Services.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Alex\OneDrive\Desktop\University\Hackathons\XMAS\XMAS.Services\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
