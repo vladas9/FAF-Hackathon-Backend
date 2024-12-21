@@ -72,20 +72,15 @@ func ExtractContentFromPage(url string) (*Content, error) {
 		return nil, err
 	}
 
-	_, err = page.WaitForSelector("body")
+	paragraphLocator := page.Locator("p")
+	paragraphCount, err := paragraphLocator.Count()
 	if err != nil {
-		log.Fatalf("could not wait for selector: %v", err)
+		log.Fatalf("could not get paragraph count: %v", err)
 		return nil, err
 	}
 
-	paragraphs, err := page.QuerySelectorAll("p")
-	if err != nil {
-		log.Fatalf("could not get <p> tags: %v", err)
-		return nil, err
-	}
-
-	for _, p := range paragraphs {
-		text, err := p.TextContent()
+	for i := 0; i < paragraphCount; i++ {
+		text, err := paragraphLocator.Nth(i).TextContent()
 		if err != nil {
 			log.Println("Error extracting paragraph text:", err)
 			continue
@@ -95,14 +90,15 @@ func ExtractContentFromPage(url string) (*Content, error) {
 
 	for i := 1; i <= 6; i++ {
 		headingTags := fmt.Sprintf("h%d", i)
-		headings, err := page.QuerySelectorAll(headingTags)
+		headingLocator := page.Locator(headingTags)
+		headingCount, err := headingLocator.Count()
 		if err != nil {
-			log.Fatalf("could not get <%s> tags: %v", headingTags, err)
+			log.Fatalf("could not get <%s> tag count: %v", headingTags, err)
 			return nil, err
 		}
 
-		for _, h := range headings {
-			text, err := h.TextContent()
+		for j := 0; j < headingCount; j++ {
+			text, err := headingLocator.Nth(j).TextContent()
 			if err != nil {
 				log.Println("Error extracting heading text:", err)
 				continue
@@ -111,14 +107,15 @@ func ExtractContentFromPage(url string) (*Content, error) {
 		}
 	}
 
-	listItems, err := page.QuerySelectorAll("ul li, ol li")
+	listLocator := page.Locator("ul li, ol li")
+	listCount, err := listLocator.Count()
 	if err != nil {
-		log.Fatalf("could not get list items: %v", err)
+		log.Fatalf("could not get list item count: %v", err)
 		return nil, err
 	}
 
-	for _, li := range listItems {
-		text, err := li.TextContent()
+	for i := 0; i < listCount; i++ {
+		text, err := listLocator.Nth(i).TextContent()
 		if err != nil {
 			log.Println("Error extracting list item text:", err)
 			continue
@@ -126,14 +123,15 @@ func ExtractContentFromPage(url string) (*Content, error) {
 		content.Lists = append(content.Lists, strings.TrimSpace(text))
 	}
 
-	spans, err := page.QuerySelectorAll("span")
+	spanLocator := page.Locator("span")
+	spanCount, err := spanLocator.Count()
 	if err != nil {
-		log.Fatalf("could not get <span> tags: %v", err)
+		log.Fatalf("could not get span tag count: %v", err)
 		return nil, err
 	}
 
-	for _, span := range spans {
-		text, err := span.TextContent()
+	for i := 0; i < spanCount; i++ {
+		text, err := spanLocator.Nth(i).TextContent()
 		if err != nil {
 			log.Println("Error extracting span text:", err)
 			continue
@@ -141,14 +139,15 @@ func ExtractContentFromPage(url string) (*Content, error) {
 		content.Spans = append(content.Spans, strings.TrimSpace(text))
 	}
 
-	images, err := page.QuerySelectorAll("img")
+	imgLocator := page.Locator("img")
+	imgCount, err := imgLocator.Count()
 	if err != nil {
-		log.Fatalf("could not get <img> tags: %v", err)
+		log.Fatalf("could not get image count: %v", err)
 		return nil, err
 	}
 
-	for _, img := range images {
-		src, err := img.GetAttribute("src")
+	for i := 0; i < imgCount; i++ {
+		src, err := imgLocator.Nth(i).GetAttribute("src")
 		if err != nil {
 			log.Println("Error extracting image src:", err)
 			continue
