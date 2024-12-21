@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = XMAS.Repositories
-build_property.ProjectDir = C:\Users\Alex\OneDrive\Desktop\University\Hackathons\FAF-Hackathon-Backend\XMAS\XMAS.Repositories\
+build_property.ProjectDir = D:\University\Hackathons\FAF-Hackathon-Backend\XMAS\XMAS.Repositories\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

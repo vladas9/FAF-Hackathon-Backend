@@ -5,20 +5,20 @@ using XMAS.Domain;
 
 namespace XMAS.Services;
 
-public class ClickbaitService : IClickbaitService
+public class LanguageService : ILanguageService
 {
     private readonly HttpClient _httpClient;
     private readonly string _key;
     private readonly string _mlService;
 
-    public ClickbaitService(HttpClient httpClient, IConfiguration configuration)
+    public LanguageService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
         _key = configuration["MlServices:AuthKey"]!;
-        _mlService = configuration["MlServices:ClickbaitMLService"]!;
+        _mlService = configuration["MlServices:LanguageMLService"]!;
     }
 
-    public async Task<string> DetectClickbaitAsync(string text)
+    public async Task<string> DetectLanguageAsync(string text)
     {
         _httpClient.DefaultRequestHeaders.Clear();
         _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_key}");
