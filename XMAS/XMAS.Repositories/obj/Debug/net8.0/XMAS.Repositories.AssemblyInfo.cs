@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XMAS.Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+669dc67b85d03e101338ce2a7494b4987c214816")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cff3494d988ced713efd346ba573bf9d17dcd885")]
 [assembly: System.Reflection.AssemblyProductAttribute("XMAS.Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XMAS.Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

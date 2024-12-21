@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj": {}
+    "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj": {
+    "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj",
+        "projectUniqueName": "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj",
         "projectName": "XMAS.Domain",
-        "projectPath": "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj",
+        "projectPath": "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\XMAS.Domain.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\obj\\",
+        "outputPath": "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

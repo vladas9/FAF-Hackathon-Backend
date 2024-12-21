@@ -10,12 +10,15 @@ builder.Services.AddSwaggerGen();
 
 // Register custom services
 builder.Services.AddScoped<ISentimentService, SentimentService>();
-builder.Services.AddScoped<IClickbaitDetectionService, ClickbaitService>();
+builder.Services.AddScoped<IClickbaitService, ClickbaitService>();
+builder.Services.AddScoped<ILanguageService, LanguageService>();
+builder.Services.AddScoped<ISimilarityService, SimilarityService>();
 
 // Register background services
 builder.Services.AddHttpClient<ISentimentService, SentimentService>();
-builder.Services.AddHttpClient<IClickbaitDetectionService, ClickbaitService>();
-
+builder.Services.AddHttpClient<IClickbaitService, ClickbaitService>();
+builder.Services.AddHttpClient<ILanguageService, LanguageService>();
+builder.Services.AddHttpClient<ISimilarityService, SimilarityService>();
 
 
 var app = builder.Build();

@@ -10,9 +10,9 @@ namespace XMAS.Api.Controllers;
 [Route("api/[controller]")]
 public class ClickbaitController : ControllerBase
 {
-    private readonly IClickbaitDetectionService _clickbaitService;
+    private readonly IClickbaitService _clickbaitService;
 
-    public ClickbaitController(IClickbaitDetectionService clickbaitService)
+    public ClickbaitController(IClickbaitService clickbaitService)
     {
         _clickbaitService = clickbaitService;
     }
