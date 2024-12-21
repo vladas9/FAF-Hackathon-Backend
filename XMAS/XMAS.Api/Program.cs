@@ -10,9 +10,12 @@ builder.Services.AddSwaggerGen();
 
 // Register custom services
 builder.Services.AddScoped<ISentimentService, SentimentService>();
+builder.Services.AddScoped<IClickbaitDetectionService, ClickbaitService>();
 
 // Register background services
 builder.Services.AddHttpClient<ISentimentService, SentimentService>();
+builder.Services.AddHttpClient<IClickbaitDetectionService, ClickbaitService>();
+
 
 
 var app = builder.Build();
