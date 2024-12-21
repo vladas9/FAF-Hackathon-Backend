@@ -15,7 +15,7 @@ type Message struct {
 }
 
 type Content struct {
-	Paragraphs []string `json:"paragraphs"`
+	Paragraphs string   `json:"paragraphs"`
 	Headings   []string `json:"headings"`
 	Images     []string `json:"images"`
 	Lists      []string `json:"lists"`
@@ -79,14 +79,17 @@ func ExtractContentFromPage(url string) (*Content, error) {
 		return nil, err
 	}
 
+	var allParagraphs string
 	for i := 0; i < paragraphCount; i++ {
 		text, err := paragraphLocator.Nth(i).TextContent()
 		if err != nil {
 			log.Println("Error extracting paragraph text:", err)
 			continue
 		}
-		content.Paragraphs = append(content.Paragraphs, strings.TrimSpace(text))
+		allParagraphs += strings.TrimSpace(text) + " "
 	}
+
+	content.Paragraphs = strings.ReplaceAll(allParagraphs, `"`, `'`)
 
 	for i := 1; i <= 6; i++ {
 		headingTags := fmt.Sprintf("h%d", i)
