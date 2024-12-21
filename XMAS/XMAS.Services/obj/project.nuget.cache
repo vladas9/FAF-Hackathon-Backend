@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2rF52WLE5vg=",
+  "dgSpecHash": "XpiVBi+QSqc=",
   "success": true,
   "projectFilePath": "C:\\Users\\Alex\\OneDrive\\Desktop\\University\\Hackathons\\FAF-Hackathon-Backend\\XMAS\\XMAS.Services\\XMAS.Services.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
