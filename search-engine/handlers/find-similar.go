@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url" // Import the net/url package
 	"strings"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,22 +20,19 @@ type NewsMetadata struct {
 	Date   string `json:"date"`
 }
 
-// NewsAPIResponse represents the structure of the response from NewsAPI
-type NewsAPIResponse struct {
-	Status       string `json:"status"`
-	TotalResults int    `json:"totalResults"`
-	Articles     []struct {
+// DuckDuckGoResponse represents the structure of the response from DuckDuckGo search
+type DuckDuckGoResponse struct {
+	Results []struct {
 		URL string `json:"url"`
-	} `json:"articles"`
+	} `json:"results"`
 }
 
 // FindSimilarNews handles the incoming request, fetches metadata from the metadata-extractor service,
-// queries NewsAPI for similar news, and returns URLs of matching articles
+// queries DuckDuckGo for similar news, and returns a single URL of a matching article
 func FindSimilarNews(c *gin.Context) {
 	// Get the URL from the query parameter
-	url := c.DefaultQuery("url", "")
-
-	if url == "" {
+	originalURL := c.DefaultQuery("url", "") // Renamed the variable to avoid conflict
+	if originalURL == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "URL is required"})
 		return
 	}
@@ -42,7 +41,7 @@ func FindSimilarNews(c *gin.Context) {
 	metadataServiceURL := "http://localhost:8001/extract-metadata"
 
 	// Create the request payload
-	payload := map[string]string{"url": url}
+	payload := map[string]string{"url": originalURL}
 	payloadBytes, err := json.Marshal(payload)
 	if err != nil {
 		log.Printf("Error marshaling payload: %v", err)
@@ -77,58 +76,67 @@ func FindSimilarNews(c *gin.Context) {
 	// Log the metadata for debugging
 	log.Printf("Received metadata: %+v", metadata)
 
-	// Construct the NewsAPI query
+	// Construct the DuckDuckGo search query
 	searchQuery := metadata.Title
-	newsAPIKey := "your_api_key_here" // Replace with your actual NewsAPI key
-	newsAPIURL := fmt.Sprintf(
-		"https://newsapi.org/v2/everything?q=%s&from=%s&apiKey=%s",
-		strings.ReplaceAll(searchQuery, " ", "+"),
-		metadata.Date,
-		newsAPIKey,
-	)
+	duckDuckGoURL := fmt.Sprintf("https://duckduckgo.com/html/?q=%s", strings.ReplaceAll(searchQuery, " ", "+"))
 
 	// Log the constructed URL for debugging
-	log.Printf("Constructed NewsAPI URL: %s", newsAPIURL)
+	log.Printf("Constructed DuckDuckGo URL: %s", duckDuckGoURL)
 
-	// Call NewsAPI
-	respAPI, err := http.Get(newsAPIURL)
+	// Call DuckDuckGo search
+	respDDG, err := http.Get(duckDuckGoURL)
 	if err != nil {
-		log.Printf("Error calling NewsAPI: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error calling NewsAPI"})
+		log.Printf("Error calling DuckDuckGo: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error calling DuckDuckGo"})
 		return
 	}
-	defer respAPI.Body.Close()
+	defer respDDG.Body.Close()
 
-	// Parse the NewsAPI response
-	var newsResponse NewsAPIResponse
-	err = json.NewDecoder(respAPI.Body).Decode(&newsResponse)
+	// Parse the DuckDuckGo response using goquery
+	doc, err := goquery.NewDocumentFromReader(respDDG.Body)
 	if err != nil {
-		log.Printf("Error decoding NewsAPI response: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error decoding NewsAPI response"})
+		log.Printf("Error parsing DuckDuckGo response: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error parsing DuckDuckGo response"})
 		return
 	}
 
-	// Log the NewsAPI response for debugging
-	log.Printf("NewsAPI Response: %+v", newsResponse)
+	// Extract the first valid URL from the DuckDuckGo search results
+	var urlToReturn string
+	doc.Find(".result__a").Each(func(i int, s *goquery.Selection) {
+		urlStr, exists := s.Attr("href")
+		if exists {
+			// Check if the URL is relative, and prepend the base URL if necessary
+			if strings.HasPrefix(urlStr, "/url?q=") {
+				// Extract the actual URL from the query parameter
+				urlStr = strings.TrimPrefix(urlStr, "/url?q=")
+				// Decode the URL if necessary
+				decodedURL, err := url.QueryUnescape(urlStr) // Correctly using url.QueryUnescape
+				if err != nil {
+					log.Printf("Error decoding URL: %v", err)
+					return
+				}
+				// Use the decoded URL
+				urlStr = decodedURL
+			}
+			// Set the first valid URL and stop the loop
+			urlToReturn = urlStr
+			return
+		}
+	})
 
-	if newsResponse.TotalResults == 0 {
+	// Check if a valid URL was found
+	if urlToReturn == "" {
 		log.Println("No similar news found.")
 		c.JSON(http.StatusOK, gin.H{
 			"message": "No similar news found",
-			"urls":    []string{},
+			"url":     "",
 		})
 		return
 	}
 
-	// Extract URLs from the response
-	var urls []string
-	for _, article := range newsResponse.Articles {
-		urls = append(urls, article.URL)
-	}
-
-	// Return the results
+	// Return the first valid URL
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Successfully fetched similar news",
-		"urls":    urls,
+		"url":     urlToReturn,
 	})
 }
