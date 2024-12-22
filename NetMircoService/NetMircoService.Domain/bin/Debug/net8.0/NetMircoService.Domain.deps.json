@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "NetMircoService.Domain/1.0.0": {
+        "runtime": {
+          "NetMircoService.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NetMircoService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
