@@ -11,8 +11,9 @@ import (
 )
 
 func HandleAll(c *gin.Context) {
-	urls := getUrls("https://fortune.com/2024/12/21/government-shutdown-congress-spending-bill-donald-trump-debt-ceiling-elon-musk/")
-	similar, _ := getSimilarity(urls)
+	url := "https://point.md/ru/novosti/ekonomika/cheban-my-ozhidaem-uvedomleniia-ot-gazproma-v-blizhaishie-dni/"
+	urls := getUrls(url)
+	similar, _ := getSimilarity(urls, url)
 	c.JSON(http.StatusOK, similar)
 }
 
@@ -43,9 +44,9 @@ func getUrls(url string) SimilarUrls {
 }
 
 type Similar struct {
-	OverallScore     int   `json:"overallScore"`
-	SimilarParts     Parts `json:"similarParts"`
-	ConflictingParts Parts `json:"conflictingParts"`
+	OverallScore     int     `json:"overallScore"`
+	SimilarParts     []Parts `json:"similarParts"`
+	ConflictingParts []Parts `json:"conflictingParts"`
 }
 
 type Parts struct {
@@ -53,44 +54,37 @@ type Parts struct {
 	Part2 string `json:"part2"`
 }
 
-func getSimilarity(urls SimilarUrls) ([]Similar, error) {
+func getSimilarity(urls SimilarUrls, originalUrl string) (Similar, error) {
 
-	var apiResponse []Similar
+	apiURL := "http://localhost:8003/get-similarity"
+	jsonData := fmt.Sprintf("{\"url\": \"%s\", \"original_url\": \"%s\"}", urls.Urls[2], originalUrl)
 
-	fmt.Println("url: ", urls)
-	for _, url := range urls.Urls {
-		apiURL := "http://localhost:8003/get-similarity"
-		jsonData := fmt.Sprintf("{\"url\": \"%s\"}", url)
-
-		req, err := http.NewRequest("POST", apiURL, bytes.NewBuffer([]byte(jsonData)))
-		if err != nil {
-			return nil, fmt.Errorf("failed to create request: %v", err)
-		}
-
-		req.Header.Set("Content-Type", "application/json")
-
-		client := &http.Client{}
-		resp, err := client.Do(req)
-		if err != nil {
-			return nil, fmt.Errorf("failed to make API request: %v", err)
-		}
-		defer resp.Body.Close()
-
-		body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			return nil, fmt.Errorf("failed to read response body: %v", err)
-		}
-
-		var apiResp Similar
-		err = json.Unmarshal(body, &apiResp)
-		if err != nil {
-			return nil, fmt.Errorf("failed to parse JSON response: %v", err)
-		}
-
-		apiResponse = append(apiResponse, apiResp)
+	req, err := http.NewRequest("POST", apiURL, bytes.NewBuffer([]byte(jsonData)))
+	if err != nil {
+		// return nil, fmt.Errorf("failed to create request: %v", err)
 	}
 
-	return apiResponse, nil
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		// return nil, fmt.Errorf("failed to make API request: %v", err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		// return nil, fmt.Errorf("failed to read response body: %v", err)
+	}
+
+	var apiResp Similar
+	err = json.Unmarshal(body, &apiResp)
+	if err != nil {
+		// return nil, fmt.Errorf("failed to parse JSON response: %v", err)
+	}
+
+	return apiResp, nil
 
 }
 

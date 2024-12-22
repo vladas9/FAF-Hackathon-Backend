@@ -15,7 +15,8 @@ import (
 )
 
 type Message struct {
-	Url string `json:"url"`
+	Url  string `json:"url"`
+	OUrl string `json:"original_url"`
 }
 
 func HandleGetSimilarity(c *gin.Context) {
@@ -25,17 +26,17 @@ func HandleGetSimilarity(c *gin.Context) {
 		return
 	}
 
-	content := calculateSimilarity()
+	content := calculateSimilarity(msg.OUrl, msg.Url)
 
 	c.JSON(http.StatusOK, content)
 }
 
-func calculateSimilarity() string {
+func calculateSimilarity(url1 string, url2 string) string {
 	// func main() {
 	godotenv.Load()
 
-	text1, err := getContent("https://www.mirror.co.uk/news/politics/donald-trump-become-president-timeline-34059687")
-	text2, err := getContent("https://www.bbc.com/news/articles/cde7ng85jwgo")
+	text1, err := getContent(url1)
+	text2, err := getContent(url2)
 
 	if err != nil {
 		fmt.Println(err)
@@ -76,7 +77,7 @@ func calculateSimilarity() string {
 				},
 				{
 					Role:    "user",
-					Content: fmt.Sprintf("Text1: %s, Text2: %s", text1, text2),
+					Content: fmt.Sprintf("Text1: %s, Text2: %s", text1.Paragraphs, text2.Paragraphs),
 				},
 			},
 		})
