@@ -1,0 +1,16 @@
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\bin\Debug\net8.0\NetMircoService.Services.deps.json
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\bin\Debug\net8.0\NetMircoService.Services.dll
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\bin\Debug\net8.0\NetMircoService.Services.pdb
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\bin\Debug\net8.0\NetMircoService.Domain.dll
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\bin\Debug\net8.0\NetMircoService.Domain.pdb
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.csproj.AssemblyReference.cache
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.AssemblyInfoInputs.cache
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.AssemblyInfo.cs
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.csproj.CoreCompileInputs.cache
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.sourcelink.json
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMirco.B822BA2F.Up2Date
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.dll
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\refint\NetMircoService.Services.dll
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\NetMircoService.Services.pdb
+D:\University\Hackathons\FAF-Hackathon-Backend\NetMircoService\NetMircoService.Services\obj\Debug\net8.0\ref\NetMircoService.Services.dll

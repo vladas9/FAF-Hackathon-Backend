@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "apHxG/9+po9oWpxDNoQJai4eN9rwAV24eS5T45RM5w8=",
+  "Source": "NetMircoService.Api",
+  "BasePath": "_content/NetMircoService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
