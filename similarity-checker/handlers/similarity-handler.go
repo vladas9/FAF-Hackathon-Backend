@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -31,7 +32,7 @@ func HandleGetSimilarity(c *gin.Context) {
 	c.JSON(http.StatusOK, content)
 }
 
-func calculateSimilarity(url1 string, url2 string) string {
+func calculateSimilarity(url1 string, url2 string) gin.H {
 	// func main() {
 	godotenv.Load()
 
@@ -63,16 +64,16 @@ func calculateSimilarity(url1 string, url2 string) string {
 					Role: "user",
 					Content: "Your answer should be in the following format:\n" +
 						"{\n" +
-						"    overallScore: ..., \n" +
-						"    similarParts: [\n" +
+						"    overallScore: ...," +
+						"    similarParts: [" +
+						"        { part1: 'Text from Article 1', part2: 'Text from Article 2', score: 'similarity score', typeOfSimilarity: 'Exact Match' | 'Partial Match' | 'Contradiction' }," +
+						"        ..." +
+						"    ]," +
+						"    conflictingParts: [" +
 						"        { part1: 'Text from Article 1', part2: 'Text from Article 2', score: 'similarity score', typeOfSimilarity: 'Exact Match' | 'Partial Match' | 'Contradiction' },\n" +
-						"        ...\n" +
-						"    ],\n" +
-						"    conflictingParts: [\n" +
-						"        { part1: 'Text from Article 1', part2: 'Text from Article 2', score: 'similarity score', typeOfSimilarity: 'Exact Match' | 'Partial Match' | 'Contradiction' },\n" +
-						"        ...\n" +
-						"    ],\n" +
-						"    notRelated: true // Indicate if the articles are unrelated, with a similarity score of 0%.\n" +
+						"        ..." +
+						"    ]," +
+						"    notRelated: true // Indicate if the articles are unrelated, with a similarity score of 0%." +
 						"}",
 				},
 				{
@@ -87,8 +88,14 @@ func calculateSimilarity(url1 string, url2 string) string {
 		} else if groqResponse == nil || len(groqResponse.Choices) == 0 || len(groqResponse.Choices[0].Message.Content) == 0 {
 			log.Printf("Empty response on attempt %d", attempts)
 		} else {
-			fmt.Println(groqResponse.Choices[0].Message.Content)
-			return groqResponse.Choices[0].Message.Content
+			// Parse the JSON response
+			var parsedResponse map[string]interface{}
+			err = json.Unmarshal([]byte(groqResponse.Choices[0].Message.Content), &parsedResponse)
+			if err != nil {
+				log.Printf("Failed to parse JSON: %v", err)
+				return gin.H{"error": "Failed to parse response JSON"}
+			}
+			return parsedResponse
 		}
 
 		if attempts < maxRetries {
@@ -96,7 +103,40 @@ func calculateSimilarity(url1 string, url2 string) string {
 			time.Sleep(2 * time.Second)
 		}
 	}
-	return ""
+
+	return gin.H{"error": "Failed to get response after multiple retries"}
+}
+
+// Define a struct for the parsed JSON
+type SimilarityResponse struct {
+	OverallScore int `json:"overallScore"`
+	SimilarParts []struct {
+		Part1            string `json:"part1"`
+		Part2            string `json:"part2"`
+		Score            int    `json:"score"`
+		TypeOfSimilarity string `json:"typeOfSimilarity"`
+	} `json:"similarParts"`
+	ConflictingParts []struct {
+		Part1            string `json:"part1"`
+		Part2            string `json:"part2"`
+		Score            int    `json:"score"`
+		TypeOfSimilarity string `json:"typeOfSimilarity"`
+	} `json:"conflictingParts"`
+	NotRelated bool `json:"notRelated"`
+}
+
+func ParseInvalidJSON(input string) (*SimilarityResponse, error) {
+	// Replace invalid placeholders with valid JSON nulls or empty strings
+	cleanedInput := strings.ReplaceAll(input, `"%!s(*handlers.PageContent=<nil>)"`, `""`)
+
+	// Unmarshal the cleaned JSON string into a struct
+	var result SimilarityResponse
+	err := json.Unmarshal([]byte(cleanedInput), &result)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse JSON: %v", err)
+	}
+
+	return &result, nil
 }
 
 type PageContent struct {
