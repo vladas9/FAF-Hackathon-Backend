@@ -18,6 +18,7 @@ type Metadata struct {
 	Author string `json:"author"`
 	Date   string `json:"date"`
 	Title  string `json:"title"`
+	Icon   string `json:"icon"`
 }
 
 func GetMetadata(c *gin.Context) {
@@ -40,32 +41,41 @@ func GetMetadata(c *gin.Context) {
 func ExtractMetadataFromPage(url string) (*Metadata, error) {
 	metadata := &Metadata{}
 
-	// Create a new collector
 	c := colly.NewCollector()
 
 	// Extract title
-	c.OnHTML("title", func(e *colly.HTMLElement) {
+	c.OnHTML("head title", func(e *colly.HTMLElement) {
 		metadata.Title = strings.TrimSpace(e.Text)
 	})
 
-	// Extract author (meta tag with name="author")
+	// Extract author
 	c.OnHTML("meta[name='author']", func(e *colly.HTMLElement) {
 		metadata.Author = strings.TrimSpace(e.Attr("content"))
 	})
 
-	// Extract date (meta tag with name="date")
+	// Extract date
 	c.OnHTML("meta[name='date']", func(e *colly.HTMLElement) {
 		metadata.Date = strings.TrimSpace(e.Attr("content"))
 	})
 
-	// Fallback: If no date in meta, try extracting from <time> tag
+	// Extract date from <time> tag
 	c.OnHTML("time", func(e *colly.HTMLElement) {
 		if metadata.Date == "" {
 			metadata.Date = strings.TrimSpace(e.Text)
 		}
 	})
 
-	// Start scraping the page
+	// Extract icon (from <link rel="icon"> tag)
+	c.OnHTML("link[rel='icon']", func(e *colly.HTMLElement) {
+		iconURL := e.Attr("href")
+		if iconURL != "" {
+			if !strings.HasPrefix(iconURL, "http") {
+				iconURL = e.Request.AbsoluteURL(iconURL)
+			}
+			metadata.Icon = iconURL
+		}
+	})
+
 	err := c.Visit(url)
 	if err != nil {
 		log.Printf("Error visiting URL: %v", err)
