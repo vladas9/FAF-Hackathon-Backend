@@ -18,7 +18,8 @@ type Metadata struct {
 	Author string `json:"author"`
 	Date   string `json:"date"`
 	Title  string `json:"title"`
-	Icon   string `json:"icon"`
+
+	Icon string `json:"icon"`
 }
 
 func GetMetadata(c *gin.Context) {
