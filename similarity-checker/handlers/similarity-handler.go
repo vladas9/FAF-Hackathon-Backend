@@ -32,8 +32,14 @@ func HandleGetSimilarity(c *gin.Context) {
 	c.JSON(http.StatusOK, content)
 }
 
+func truncateText(text string, maxLength int) string {
+	if len(text) > maxLength {
+		return text[:maxLength] + "..." // Truncate and add ellipsis
+	}
+	return text
+}
+
 func calculateSimilarity(url1 string, url2 string) gin.H {
-	// func main() {
 	godotenv.Load()
 
 	text1, err := getContent(url1)
@@ -42,6 +48,11 @@ func calculateSimilarity(url1 string, url2 string) gin.H {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	maxLength := 1000
+
+	truncatedText1 := truncateText(text1.Paragraphs, maxLength)
+	truncatedText2 := truncateText(text2.Paragraphs, maxLength)
 
 	client := groq.NewClient()
 	var groqResponse *groq.ChatCompletion
@@ -78,7 +89,7 @@ func calculateSimilarity(url1 string, url2 string) gin.H {
 				},
 				{
 					Role:    "user",
-					Content: fmt.Sprintf("Text1: %s, Text2: %s", text1.Paragraphs, text2.Paragraphs),
+					Content: fmt.Sprintf("Text1: %s, Text2: %s", truncatedText1, truncatedText2),
 				},
 			},
 		})

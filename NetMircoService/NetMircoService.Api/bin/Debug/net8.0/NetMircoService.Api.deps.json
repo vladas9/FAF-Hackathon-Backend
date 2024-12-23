@@ -89,10 +89,7 @@
       },
       "NetMircoService.Domain/1.0.0": {
         "runtime": {
-          "NetMircoService.Domain.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "NetMircoService.Domain.dll": {}
         }
       },
       "NetMircoService.Services/1.0.0": {
@@ -101,10 +98,7 @@
           "NetMircoService.Domain": "1.0.0"
         },
         "runtime": {
-          "NetMircoService.Services.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "NetMircoService.Services.dll": {}
         }
       }
     }

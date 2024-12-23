@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AfobpHfftec=",
+  "dgSpecHash": "XaupFnLRH6y3+a9PmqbWNyXmybz3OYS4Wo6+TJ312w0i1Xubnm46exQzDr9EHQlSUy+5/k8S/7esHmNfmIeCAA==",
   "success": true,
-  "projectFilePath": "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\NetMircoService\\NetMircoService.Domain\\NetMircoService.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/user/Desktop/hackathon/NetMircoService/NetMircoService.Domain/NetMircoService.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/user/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
+  ],
   "logs": []
 }

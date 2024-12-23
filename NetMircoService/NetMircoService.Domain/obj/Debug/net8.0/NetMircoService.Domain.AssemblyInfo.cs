@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetMircoService.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cd6096f1195228daa2e9acfd0374468f1d7e1ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fd452f56b6bda5da3848eb52593224ed6e2da9d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetMircoService.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetMircoService.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -9,7 +9,7 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/get-info", handlers.HandleAll)
+	r.POST("/get-info", handlers.HandleAll)
 
 	r.Run(":6969")
 }

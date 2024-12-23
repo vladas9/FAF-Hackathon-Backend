@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Vi3zgTJZSv4=",
+  "dgSpecHash": "vELt7+20Sl/AALkpkt9zogI1ruTGX3yEdX8qz5oWU/VAzIF35lv58OsFZTzIzF8rtcfU6AUF4Ph1umqJUR9rJg==",
   "success": true,
-  "projectFilePath": "D:\\University\\Hackathons\\FAF-Hackathon-Backend\\NetMircoService\\NetMircoService.Services\\NetMircoService.Services.csproj",
+  "projectFilePath": "/home/user/Desktop/hackathon/NetMircoService/NetMircoService.Services/NetMircoService.Services.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
-    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Alex\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "/home/user/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "/home/user/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/home/user/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/home/user/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
   ],
   "logs": []
 }
